@@ -1,0 +1,20 @@
+第一题就用了将近一小时还错了😭
+最先想到的办法就是枚举法，然而c++数组都忘了，要去看看书复习了
+评论区里大佬提到的哈希表法并没听过，知识面还是太小
+下面是代码示例
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int x=nums.size();
+        for(int i=0;i<x;i++)
+        {
+            for(int j=i+1;j<x;j++)
+            {
+                int y;
+                y=nums[i]+nums[j];
+                if(y==target)
+                cout<<"{"<<i<<","<<"j"<<"}";
+            }
+        }return {};
+    }
+};
