@@ -1,0 +1,43 @@
+  2021.4.4😎
+今天的题目
+给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
+回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。例如，121 是回文，而 123 不是
+原代码如下
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        int a,b,c;
+        a=x/100;
+        b=(x/10)%10;
+        c=(x%100)%10;
+        if(x<0)
+            return false;
+        else
+            {if(a==c)
+            return "ture";
+            else
+            return false;}
+    }
+};
+这个代码有局限性，只能进行规定位数的回文数的判断，对它进行修改如下
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if(x<0||(x%10)==0 && x!=0) //判断x为负数或x末位为0但首位不为0则一定不是回文数输出false
+            return false;
+        int a=0;
+        while(x>a)
+        {
+            a=a*10+(x%10);
+            x/=10;
+        }
+        if(x==a)
+            return "ture";
+        if(x==a/10)
+            return "ture";
+        return 0;
+    }
+};
+改良后的代码的优点在于用while语句及后续的if语句完成了对回文数的判断，原理如下
+  回文数x反转后与自身相等，则将x的每一位都取出，逆序还原并与原数进行比较，且由回文数性质可得只需取出一半数即可。
+  若x位数是奇数个，那么就需要去掉中间数，只要将逆序取得的数进行一次/10操作即可
